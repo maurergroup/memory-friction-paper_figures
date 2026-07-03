@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <!-- Glow filter for adsorbate -->
+    <radialGradient id="adsorbateGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF6F00" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#FF6F00" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#FF6F00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="400" fill="#0B0C10"/>
+
+  <!-- ============================================================ -->
+  <!-- Surface reference line (flat, subtle)                        -->
+  <!-- ============================================================ -->
+  <line x1="0" y1="260" x2="800" y2="260" stroke="#C5C6C7" stroke-opacity="0.18" stroke-width="0.8" stroke-dasharray="8 12"/>
+
+  <!-- ============================================================ -->
+  <!-- Friedel oscillation surface line                             -->
+  <!-- ============================================================ -->
+  <polyline
+    points="
+      0,258.1 4,257.3 8,258.0 12,260.0 16,262.0 20,262.9 24,262.1 28,260.0 32,257.8 36,256.8
+      40,257.7 44,260.0 48,262.4 52,263.5 56,262.5 60,260.0 64,257.4 68,256.2 72,257.3 76,260.0
+      80,262.8 84,264.1 88,263.0 92,260.0 96,256.9 100,255.5 104,256.8 108,260.0 112,263.4 116,264.9
+      120,263.5 124,260.0 128,256.3 132,254.7 136,256.2 140,260.0 144,263.9 148,265.7 152,264.1
+      156,260.0 160,255.9 164,254.1 168,255.8 172,260.0 176,264.2 180,266.0 184,264.2 188,260.0
+      192,255.8 196,254.1 200,255.9 204,260.0 208,264.1 212,265.7 216,263.9 220,260.0 224,256.2
+      228,254.7 232,256.3 236,260.0 240,263.5 244,264.9 248,263.4 252,260.0 256,256.8 260,255.5
+      264,256.9 268,260.0 272,263.0 276,264.1 280,262.8 284,260.0 288,257.3 292,256.2 296,257.4
+      300,260.0 304,262.5 308,263.5 312,262.4 316,260.0 320,257.7 324,256.8 328,257.8 332,260.0
+      336,262.1 340,262.9 344,262.0 348,260.0 352,258.0 356,257.3 360,258.1 364,260.0 368,261.8
+      372,262.5 376,261.8 380,260.0 384,258.3 388,257.6 392,258.3 396,260.0 400,261.6 404,262.2
+      408,261.6 412,260.0 416,258.5 420,257.9 424,258.5 428,260.0 432,261.4 436,262.0 440,261.4
+      444,260.0 448,258.6 452,258.1 456,258.7 460,260.0 464,261.3 468,261.8 472,261.2 476,260.0
+      480,258.8 484,258.3 488,258.8 492,260.0 496,261.2 500,261.6 504,261.1 508,260.0 512,258.9
+      516,258.4 520,258.9 524,260.0 528,261.1 532,261.5 536,261.0 540,260.0 544,259.0 548,258.6
+      552,259.0 556,260.0 560,261.0 564,261.4 568,261.0 572,260.0 576,259.1 580,258.7 584,259.1
+      588,260.0 592,260.9 596,261.3 600,260.9 604,260.0 608,259.1 612,258.8 616,259.1 620,260.0
+      624,260.8 628,261.2 632,260.8 636,260.0 640,259.2 644,258.9 648,259.2 652,260.0 656,260.8
+      660,261.1 664,260.8 668,260.0 672,259.2 676,258.9 680,259.2 684,260.0 688,260.7 692,261.0
+      696,260.7 700,260.0 704,259.3 708,259.0 712,259.3 716,260.0 720,260.7 724,261.0 728,260.7
+      732,260.0 736,259.3 740,259.0 744,259.3 748,260.0 752,260.7 756,260.9 760,260.7 764,260.0
+      768,259.4 772,259.1 776,259.4 780,260.0 784,260.6 788,260.9 792,260.6 796,260.0 800,259.4
+    "
+    fill="none" stroke="#45A29E" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"
+  />
+
+  <!-- ============================================================ -->
+  <!-- Asymmetric wake arcs (memory kernel)                         -->
+  <!-- Each arc: gentle departure from adsorbate, steep arrival     -->
+  <!-- right side = compressed (recent perturbation)                -->
+  <!-- left side  = stretched (older perturbation)                  -->
+  <!-- ============================================================ -->
+
+  <!-- Arc τ₃: weakest memory (furthest extent, lowest opacity) -->
+  <path d="M 190,225 C 278,82 680,96 694,250"
+        fill="none" stroke="#C5CAE9" stroke-opacity="0.40" stroke-width="2.4"
+        stroke-linecap="round"/>
+
+  <!-- Arc τ₂: intermediate memory -->
+  <path d="M 190,225 C 268,112 568,125 584,250"
+        fill="none" stroke="#9FA8DA" stroke-opacity="0.55" stroke-width="2.4"
+        stroke-linecap="round"/>
+
+  <!-- Arc τ₁: strongest memory (closest extent, highest opacity) -->
+  <path d="M 190,225 C 258,142 460,155 478,248"
+        fill="none" stroke="#5C6BC0" stroke-opacity="0.70" stroke-width="2.6"
+        stroke-linecap="round"/>
+
+  <!-- ============================================================ -->
+  <!-- Adsorbate (solid circle + glow)                              -->
+  <!-- ============================================================ -->
+  <circle cx="180" cy="226" r="24" fill="url(#adsorbateGlow)"/>
+  <circle cx="180" cy="226" r="7" fill="#FF6F00" stroke="#FFB74D" stroke-width="1.2"/>
+
+  <!-- ============================================================ -->
+  <!-- Dots at arc endpoints + dashed vertical lines to surface     -->
+  <!-- ============================================================ -->
+
+  <!-- Arc τ₁ endpoint and line -->
+  <circle cx="478" cy="248" r="3" fill="#5C6BC0"/>
+  <line x1="478" y1="248" x2="478" y2="263" stroke="#C5C6C7" stroke-opacity="0.50" stroke-width="0.8" stroke-dasharray="3 3"/>
+
+  <!-- Arc τ₂ endpoint and line -->
+  <circle cx="584" cy="250" r="3" fill="#9FA8DA"/>
+  <line x1="584" y1="250" x2="584" y2="263" stroke="#C5C6C7" stroke-opacity="0.45" stroke-width="0.8" stroke-dasharray="3 3"/>
+
+  <!-- Arc τ₃ endpoint and line -->
+  <circle cx="694" cy="250" r="3" fill="#C5CAE9"/>
+  <line x1="694" y1="250" x2="694" y2="263" stroke="#C5C6C7" stroke-opacity="0.38" stroke-width="0.8" stroke-dasharray="3 3"/>
+
+  <!-- ============================================================ -->
+  <!-- Labels: τ₁, τ₂, τ₃ under dashed lines                        -->
+  <!-- ============================================================ -->
+  <text x="478" y="282" text-anchor="middle" font-family="sans-serif" font-size="13" font-style="italic"
+        fill="#C5C6C7" fill-opacity="0.75">τ₁</text>
+  <text x="584" y="282" text-anchor="middle" font-family="sans-serif" font-size="13" font-style="italic"
+        fill="#C5C6C7" fill-opacity="0.70">τ₂</text>
+  <text x="694" y="282" text-anchor="middle" font-family="sans-serif" font-size="13" font-style="italic"
+        fill="#C5C6C7" fill-opacity="0.62">τ₃</text>
+
+  <!-- ============================================================ -->
+  <!-- Labels: K(τ₁), K(τ₂), K(τ₃) near arc peaks                  -->
+  <!-- ============================================================ -->
+  <text x="350" y="153" text-anchor="end" font-family="sans-serif" font-size="13" font-style="italic"
+        fill="#5C6BC0" fill-opacity="0.80">K(τ₁)</text>
+  <text x="410" y="125" text-anchor="end" font-family="sans-serif" font-size="12.5" font-style="italic"
+        fill="#9FA8DA" fill-opacity="0.75">K(τ₂)</text>
+  <text x="470" y="98" text-anchor="end" font-family="sans-serif" font-size="12.5" font-style="italic"
+        fill="#C5CAE9" fill-opacity="0.70">K(τ₃)</text>
+
+  <!-- ============================================================ -->
+  <!-- Text: MEMORY FRICTION (small caps) — top left                 -->
+  <!-- ============================================================ -->
+  <text x="38" y="64" font-family="sans-serif" font-size="32" font-weight="600"
+        letter-spacing="8" fill="#FFFFFF" fill-opacity="0.92"
+        text-transform="uppercase">MEMORY FRICTION</text>
+
+  <!-- ============================================================ -->
+  <!-- Text: Copyright / author — bottom                             -->
+  <!-- ============================================================ -->
+  <text x="42" y="370" font-family="sans-serif" font-size="16" font-weight="400"
+        letter-spacing="2" fill="#C5C6C7" fill-opacity="0.78">© Xuexun Lu</text>
+
+  <!-- ============================================================ -->
+  <!-- Subtitle: method description — bottom                         -->
+  <!-- ============================================================ -->
+  <text x="42" y="390" font-family="sans-serif" font-size="11" font-weight="300"
+        letter-spacing="1.2" fill="#45A29E" fill-opacity="0.55">GENERALISED LANGEVIN DYNAMICS  ·  NON-MARKOVIAN ELECTRONIC FRICTION</text>
+
+  <!-- ============================================================ -->
+  <!-- Decorative: faint energy-level tick marks on left side       -->
+  <!-- ============================================================ -->
+  <g stroke="#C5C6C7" stroke-opacity="0.10" stroke-width="0.5">
+    <line x1="20" y1="200" x2="30" y2="200"/>
+    <line x1="20" y1="220" x2="30" y2="220"/>
+    <line x1="20" y1="240" x2="30" y2="240"/>
+    <line x1="20" y1="260" x2="30" y2="260"/>
+    <line x1="20" y1="280" x2="30" y2="280"/>
+    <line x1="20" y1="300" x2="30" y2="300"/>
+    <line x1="20" y1="320" x2="30" y2="320"/>
+  </g>
+</svg>
