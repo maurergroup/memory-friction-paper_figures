@@ -26,8 +26,8 @@ A manuscript is in preparation. Check the [issues](https://github.com/maurergrou
 ```
 .
 ├── _research/          Research notes, derivations, and theoretical background
-├── data/               Raw and processed data (untracked by git)
-├── notebooks/          Interactive Pluto / Jupyter notebooks
+├── assets/             assets for this repository (e.g., logos, icons, etc.)
+├── figure_data/        Figure data to reproduce the figures in the paper
 ├── plots/              Generated figures
 ├── scripts/            Simulation and analysis scripts
 ├── src/                Reusable source modules (under development)
@@ -90,10 +90,10 @@ The theoretical treatment of electronic friction and memory-dependent friction i
 
 
 9. **Maurer, Askerka, Batista, & Tully** (*2016*), [*Phys. Rev. B*](https://doi.org/10.1103/PhysRevB.94.115432), **94**, 115432.  
-
+    Milestoning and first work demonstrates the ab initio electronic structure-level electronic friction of molecules on metal surfaces dynamics with Nonadiabatic vibrational relaxation
 
 10. **Gardner, Habershon, & Maurer** (*2023*), [*J. Phys. Chem. C*](https://doi.org/10.1021/acs.jpcc.3c03591), **127**, 15257.  
-    Benchmarked several mixed quantum-classical methods (MDEF, Ehrenfest, IESH, BCME) against scattering models for molecules on metal surfaces.
+    Benchmarked several mixed quantum-classical methods (MDEF, Ehrenfest, IESH, BCME) against scattering models for molecules on metal surfaces. Provides a comprehensive introduction and comparison of different non-adiabatic dynamics methods for further reading and reference.
 
 These ten studies collectively establish the theoretical and computational context in which the present work on memory-driven electronic friction via Generalised Langevin Dynamics is situated.
 
@@ -122,7 +122,7 @@ Copyright © 2026 Xuexun Lu.
 
 <div align="center">
 
-[**Xuexun Lu**](https://louhokseson.github.io)<br>
+[**Xuexun Lu (Hokseon)**](https://louhokseson.github.io)<br>
 *PhD Candidate*
 
 [The Maurer Computational Surface Science Group](https://maurergroup.github.io)
