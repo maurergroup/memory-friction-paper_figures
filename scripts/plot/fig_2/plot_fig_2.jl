@@ -15,7 +15,7 @@ const TWO_COLUMN_WIDTH = 481
 const XLIMITS = (-0.2, 11.0)
 const panel_labels = ["(a)", "(b)", "(c)"]
 const panel_spinewidth = 1.8
-const FONT = projectdir("fonts", "dejavu-sans.book.ttf")
+const FONT = projectdir("assets", "fonts", "dejavu-sans.book.ttf")
 
 const AXIS_LABEL_SIZE   = 18
 const TICK_LABEL_SIZE   = 16

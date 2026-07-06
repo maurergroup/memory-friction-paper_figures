@@ -11,7 +11,7 @@ using CairoMakie
 
 # --- styling constants (kept identical to the original plotting script) ---
 const TWO_COLUMN_WIDTH = 481
-const FONT = projectdir("fonts", "dejavu-sans.book.ttf")
+const FONT = projectdir("assets", "fonts", "dejavu-sans.book.ttf")
 
 const panel_spinewidth = 1.8
 const tick_size = 6

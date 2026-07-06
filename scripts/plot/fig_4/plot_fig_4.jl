@@ -24,7 +24,7 @@ const LINE_WIDTH        = 1.8
 const MARKER_SIZE       = 12
 const SPINE_WIDTH       = 1.8
 
-const FONT = projectdir("fonts", "dejavu-sans.book.ttf")
+const FONT = projectdir("assets", "fonts", "dejavu-sans.book.ttf")
 
 # Sequential temperature colour ramp from HokseonPlots' NICECOLORS.
 const NICECOLORS = ColorScheme(parse.(Colorant, ["#FCE1A4","#FABF7B","#F08F6E","#E05C5C","#D12959","#AB1866","#6E005F"]))

@@ -18,7 +18,7 @@ const colors = [
     colorant"#d62728",
 ]
 
-const FONT = projectdir("fonts", "dejavu-sans.book.ttf")
+const FONT = projectdir("assets", "fonts", "dejavu-sans.book.ttf")
 
 const FIG_FRACTION = 1.0
 scaled(x) = x .* FIG_FRACTION
@@ -37,7 +37,7 @@ const AXIS_LABEL_SIZE   = scaled(18)
 const TITLE_SIZE        = scaled(16)
 const TICK_LABEL_SIZE   = scaled(16)
 const ANNOTATION_SIZE   = scaled(16)
-const LEGEND_LABEL_SIZE = scaled(16)
+const LEGEND_LABEL_SIZE = scaled(18)
 const LEGEND_TITLE_SIZE = scaled(18)
 
 # --- column reducers cannot be serialized; recreate them by index ---
