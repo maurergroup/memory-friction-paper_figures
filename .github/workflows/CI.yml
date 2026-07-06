@@ -6,13 +6,11 @@ on:
     tags: '*'
   pull_request:
 concurrency:
-  # Skip intermediate builds: always.
-  # Cancel intermediate builds: only if it is a pull request build.
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
 jobs:
   test:
-    name: Julia ${{ matrix.version }} - ${{ matrix.os }} - ${{ matrix.arch }} - ${{ github.event_name }}
+    name: Julia ${{ matrix.version }} - ${{ matrix.os }} - ${{ matrix.arch }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -25,13 +23,32 @@ jobs:
           - x64
     steps:
       - uses: actions/checkout@v4
+
       - uses: julia-actions/setup-julia@v1
         with:
           version: ${{ matrix.version }}
           arch: ${{ matrix.arch }}
+
       - uses: julia-actions/cache@v1
+
       - uses: julia-actions/julia-buildpkg@v1
 
-      - name: Run tests
+      # CairoMakie needs a virtual framebuffer for headless rendering in CI.
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y xvfb
+
+      - name: Run tests (headless)
         run: >
+          xvfb-run --auto-servernum
           julia --project=. --color=yes test/runtests.jl
+
+      # Upload generated figures as CI artifacts so reviewers can inspect them.
+      - name: Upload figures as artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: figures
+          path: plots/
+          retention-days: 7
