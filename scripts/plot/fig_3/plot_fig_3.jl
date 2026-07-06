@@ -1,5 +1,5 @@
 using DrWatson
-@quickactivate "HokseonReproduce"
+@quickactivate "memory-friction-paper_figures"
 
 using HDF5
 using CairoMakie
