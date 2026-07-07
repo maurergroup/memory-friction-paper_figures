@@ -12,8 +12,8 @@ using ColorSchemes
 # -----------------------------------------------------------------------------
 
 # --- styling constants (kept identical to the original plotting script) ---
-const TWO_COLUMN_WIDTH = 481
-const FIG_WIDTH         = TWO_COLUMN_WIDTH
+const ONE_COLUMN_WIDTH = 481
+const FIG_WIDTH         = ONE_COLUMN_WIDTH
 const FIG_HEIGHT        = round(Int, FIG_WIDTH * 0.6)
 const AXIS_LABEL_SIZE   = 18
 const TICK_LABEL_SIZE   = 16
@@ -87,7 +87,7 @@ h5open(h5_path, "r") do h5
 
     axis_kwargs = (
         xlabel = "Δ₀ (eV)",
-        ylabel = "ΔE (eV)",
+        ylabel = "Frictional energy loss (eV)",
         xscale = log10,
         xlabelsize     = AXIS_LABEL_SIZE,
         ylabelsize     = AXIS_LABEL_SIZE,

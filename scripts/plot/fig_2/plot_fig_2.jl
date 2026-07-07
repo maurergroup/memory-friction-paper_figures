@@ -11,7 +11,7 @@ using Colors
 # -----------------------------------------------------------------------------
 
 # --- styling constants (kept identical to the original plotting script) ---
-const TWO_COLUMN_WIDTH = 481
+const ONE_COLUMN_WIDTH = 481
 const XLIMITS = (-0.2, 11.0)
 const panel_labels = ["(a)", "(b)", "(c)"]
 const panel_spinewidth = 1.8
@@ -19,9 +19,9 @@ const FONT = projectdir("assets", "fonts", "dejavu-sans.book.ttf")
 
 const AXIS_LABEL_SIZE   = 18
 const TICK_LABEL_SIZE   = 16
-const ANNOTATION_SIZE   = 18
+const ANNOTATION_SIZE   = 16
 const LEGEND_LABEL_SIZE = 16
-const LEGEND_TITLE_SIZE = 18
+const LEGEND_TITLE_SIZE = 16
 
 const colors = [
     colorant"#1f77b4",
@@ -43,7 +43,7 @@ C_FERMI_LABEL = isinteger(C_FERMI) ? Int(C_FERMI) : C_FERMI
 panel_names = ["panel_a", "panel_b", "panel_c"]
 
 fig = Figure(
-    size = (TWO_COLUMN_WIDTH, TWO_COLUMN_WIDTH),
+    size = (ONE_COLUMN_WIDTH, ONE_COLUMN_WIDTH),
     figure_padding = (2, 6, 2, 2),
     fonts = (; regular = FONT),
 )
@@ -133,7 +133,7 @@ for (k, Γ) in enumerate(Γ_values)
     # Second pass: draw curves and peak markers.
     for c in panel_curves
         lines!(ax, c.ω_ev, c.γ; color = colors[c.i], linestyle = :dash,  linewidth = 2)
-        vlines!(ax, c.ω_peak;     color = colors[c.i], linestyle = :dot,   linewidth = 1.5)
+        vlines!(ax, c.ω_peak;     color = colors[c.i], linestyle = :dot,   linewidth = 2)
         lines!(ax, c.ω_ev, c.Λ;  color = colors[c.i], linestyle = :solid, linewidth = 2)
     end
 
@@ -167,8 +167,8 @@ style_elems  = [
 style_labels = ["Memory", "Markovian"]
 
 peak_elems  = [LineElement(
-    points = [Point2f(0.5, 0), Point2f(0.5, 1)],
-    color = :gray25, linestyle = :dot, linewidth = 1.5,
+    points = [Point2f(0.5, -0.25), Point2f(0.5, 1.25)],
+    color = :gray25, linestyle = :dot, linewidth = 2,
 )]
 peak_labels = ["ħω = |h(x)| + $(C_FERMI_LABEL) kʙT"]
 
@@ -202,7 +202,7 @@ Legend(legend_grid[3, 2], peak_elems,  peak_labels;  legend_kwargs...)
 colgap!(legend_grid, 8)
 rowgap!(legend_grid, 2)
 
-colgap!(fig.layout, 4)
+colgap!(fig.layout, 2)
 
 close(h5)
 

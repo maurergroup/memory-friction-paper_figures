@@ -10,7 +10,7 @@ using CairoMakie
 # -----------------------------------------------------------------------------
 
 # --- styling constants (kept identical to the original plotting script) ---
-const TWO_COLUMN_WIDTH = 481
+const ONE_COLUMN_WIDTH = 481
 const FONT = projectdir("assets", "fonts", "dejavu-sans.book.ttf")
 
 const panel_spinewidth = 1.8
@@ -66,7 +66,7 @@ n_cols = length(E_trans_eV_list)
 
 # --- build figure ---
 fig = Figure(;
-    size = (TWO_COLUMN_WIDTH, TWO_COLUMN_WIDTH),
+    size = (ONE_COLUMN_WIDTH, ONE_COLUMN_WIDTH),
     figure_padding = (8, 12, 6, 6),
     fonts = (; regular = FONT),
 )

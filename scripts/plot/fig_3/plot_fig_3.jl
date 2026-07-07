@@ -170,14 +170,14 @@ h5open(h5_path, "r") do h5
     zs_sorted = sort(Z_VALUES)
     color_elems  = [LineElement(color = colors[i], linewidth = LINE_WIDTH)
                     for i in 1:length(zs_sorted)]
-    color_labels = ["$z" for z in zs_sorted]
+    color_labels = [" $z " for z in zs_sorted]
 
     style_elems  = [LineElement(color = :black, linestyle = :solid, linewidth = LINE_WIDTH),
                     LineElement(color = :black, linestyle = :dash,  linewidth = LINE_WIDTH)]
-    style_labels = ["Memory", "Markovian"]
+    style_labels = [" Memory ", " Markovian "]
 
     threshold_elems  = [MarkerElement(marker = :x, color = :black, markersize = MARKER_SIZE)]
-    threshold_labels = ["ħω*"]
+    threshold_labels = [" ħω* "]
 
     legend_kwargs = (
         orientation   = :horizontal,
@@ -202,7 +202,7 @@ h5open(h5_path, "r") do h5
     Legend(fig[0, 1:2],
            [color_elems, style_elems, threshold_elems],
            [color_labels, style_labels, threshold_labels],
-           ["z  (Å)", "   |   Friction", "   |   PSD threshold"];
+           ["z  (Å) ", "   |   Friction ", "   |   PSD threshold "];
            legend_kwargs...)
 
     colgap!(fig.layout, FIG_COLGAP)
