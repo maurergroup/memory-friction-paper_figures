@@ -12,6 +12,7 @@ jobs:
   test:
     name: Julia ${{ matrix.version }} - ${{ matrix.os }} - ${{ matrix.arch }}
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
@@ -38,6 +39,15 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install -y xvfb
+
+      # Force loading CairoMakie under xvfb so precompilation happens in this
+      # step, not during the test step.  The julia-buildpkg step calls
+      # Pkg.precompile() but cached .ji files can be stale — an actual `using`
+      # catches that and recompiles now rather than silently during tests.
+      - name: Pre-warm CairoMakie
+        run: >
+          xvfb-run --auto-servernum
+          julia --project=. -e 'using CairoMakie'
 
       - name: Run tests (headless)
         run: >
