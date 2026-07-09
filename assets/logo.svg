@@ -84,7 +84,7 @@
   <!-- ============================================================ -->
   <!-- Bath label — subtle, above the oscillator array              -->
   <!-- ============================================================ -->
-  <text x="295" y="318" font-family="sans-serif" font-size="10" font-weight="300"
+  <text x="295" y="333" font-family="sans-serif" font-size="15" font-weight="600"
         letter-spacing="3" fill="#C5C6C7" fill-opacity="0.35" text-anchor="middle" font-style="italic">bath  —  harmonic oscillators</text>
 
   <!-- ============================================================ -->
@@ -159,7 +159,7 @@
   <!-- ============================================================ -->
   <!-- Frequency labels — below each oscillator on the surface       -->
   <!-- ============================================================ -->
-  <g font-family="sans-serif" font-size="11.5" font-style="italic" text-anchor="middle">
+  <g font-family="sans-serif" font-size="14.0" font-style="italic" text-anchor="middle">
     <text x="90"  y="300" fill="#FF8A65" fill-opacity="0.80">ω₁</text>
     <text x="175" y="300" fill="#FFB74D" fill-opacity="0.80">ω₂</text>
     <text x="260" y="300" fill="#FFF176" fill-opacity="0.80">ω₃</text>
@@ -172,7 +172,7 @@
   <!-- Adsorbate molecule (the SYSTEM) — top right                   -->
   <!-- ============================================================ -->
   <!-- Subtle "system" label -->
-  <text x="600" y="118" font-family="sans-serif" font-size="9" font-weight="300"
+  <text x="600" y="118" font-family="sans-serif" font-size="15" font-weight="600"
         letter-spacing="3" fill="#C5C6C7" fill-opacity="0.35" text-anchor="middle" font-style="italic">system</text>
 
   <!-- Outer glow -->
@@ -196,14 +196,14 @@
   <!-- ============================================================ -->
   <!-- Copyright / author — bottom                                   -->
   <!-- ============================================================ -->
-  <text x="42" y="368" font-family="sans-serif" font-size="16" font-weight="400"
-        letter-spacing="2" fill="#C5C6C7" fill-opacity="0.78">© Xuexun Lu</text>
+  <text x="758" y="368" font-family="sans-serif" font-size="16" font-weight="400"
+        letter-spacing="2" fill="#C5C6C7" fill-opacity="0.78" text-anchor="end">© Xuexun Lu</text>
 
   <!-- ============================================================ -->
   <!-- Subtitle: method — bottom                                     -->
   <!-- ============================================================ -->
-  <text x="42" y="388" font-family="sans-serif" font-size="11" font-weight="300"
-        letter-spacing="1.2" fill="#45A29E" fill-opacity="0.55">GENERALISED LANGEVIN DYNAMICS  ·  NON-MARKOVIAN ELECTRONIC FRICTION</text>
+  <text x="758" y="388" font-family="sans-serif" font-size="11" font-weight="300"
+        letter-spacing="1.2" fill="#45A29E" fill-opacity="0.55" text-anchor="end">GENERALISED LANGEVIN DYNAMICS  ·  NON-MARKOVIAN ELECTRONIC FRICTION</text>
 
   <!-- ============================================================ -->
   <!-- Decorative: faint energy-level tick marks on left side        -->
