@@ -1,137 +1,212 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
   <defs>
-    <!-- Glow filter for adsorbate -->
+    <!-- Adsorbate glow (system) — top right -->
     <radialGradient id="adsorbateGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#FF6F00" stop-opacity="0.9"/>
-      <stop offset="60%" stop-color="#FF6F00" stop-opacity="0.3"/>
+      <stop offset="0%" stop-color="#FF6F00" stop-opacity="0.95"/>
+      <stop offset="40%" stop-color="#FF6F00" stop-opacity="0.35"/>
       <stop offset="100%" stop-color="#FF6F00" stop-opacity="0"/>
     </radialGradient>
+
+    <!-- Oscillator mass glows — warm to cool (low ω → high ω) -->
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF8A65" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#FF8A65" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFB74D" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#FFB74D" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF176" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#FFF176" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow4" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#81C784" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#81C784" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow5" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#64B5F6" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#64B5F6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow6" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#CE93D8" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#CE93D8" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Spectral gradient for J(ω) legend bar -->
+    <linearGradient id="spectrumGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#FF7043"/>
+      <stop offset="20%"  stop-color="#FFA726"/>
+      <stop offset="40%"  stop-color="#FDD835"/>
+      <stop offset="60%"  stop-color="#66BB6A"/>
+      <stop offset="80%"  stop-color="#42A5F5"/>
+      <stop offset="100%" stop-color="#AB47BC"/>
+    </linearGradient>
   </defs>
 
   <!-- Background -->
   <rect x="0" y="0" width="800" height="400" fill="#0B0C10"/>
 
   <!-- ============================================================ -->
-  <!-- Surface reference line (flat, subtle)                        -->
+  <!-- Surface reference line                                        -->
   <!-- ============================================================ -->
-  <line x1="0" y1="260" x2="800" y2="260" stroke="#C5C6C7" stroke-opacity="0.18" stroke-width="0.8" stroke-dasharray="8 12"/>
+  <line x1="0" y1="275" x2="800" y2="275" stroke="#C5C6C7" stroke-opacity="0.14" stroke-width="0.8" stroke-dasharray="8 12"/>
 
   <!-- ============================================================ -->
-  <!-- Friedel oscillation surface line                             -->
+  <!-- Friedel oscillation surface line (centered at y=275)          -->
   <!-- ============================================================ -->
   <polyline
     points="
-      0,258.1 4,257.3 8,258.0 12,260.0 16,262.0 20,262.9 24,262.1 28,260.0 32,257.8 36,256.8
-      40,257.7 44,260.0 48,262.4 52,263.5 56,262.5 60,260.0 64,257.4 68,256.2 72,257.3 76,260.0
-      80,262.8 84,264.1 88,263.0 92,260.0 96,256.9 100,255.5 104,256.8 108,260.0 112,263.4 116,264.9
-      120,263.5 124,260.0 128,256.3 132,254.7 136,256.2 140,260.0 144,263.9 148,265.7 152,264.1
-      156,260.0 160,255.9 164,254.1 168,255.8 172,260.0 176,264.2 180,266.0 184,264.2 188,260.0
-      192,255.8 196,254.1 200,255.9 204,260.0 208,264.1 212,265.7 216,263.9 220,260.0 224,256.2
-      228,254.7 232,256.3 236,260.0 240,263.5 244,264.9 248,263.4 252,260.0 256,256.8 260,255.5
-      264,256.9 268,260.0 272,263.0 276,264.1 280,262.8 284,260.0 288,257.3 292,256.2 296,257.4
-      300,260.0 304,262.5 308,263.5 312,262.4 316,260.0 320,257.7 324,256.8 328,257.8 332,260.0
-      336,262.1 340,262.9 344,262.0 348,260.0 352,258.0 356,257.3 360,258.1 364,260.0 368,261.8
-      372,262.5 376,261.8 380,260.0 384,258.3 388,257.6 392,258.3 396,260.0 400,261.6 404,262.2
-      408,261.6 412,260.0 416,258.5 420,257.9 424,258.5 428,260.0 432,261.4 436,262.0 440,261.4
-      444,260.0 448,258.6 452,258.1 456,258.7 460,260.0 464,261.3 468,261.8 472,261.2 476,260.0
-      480,258.8 484,258.3 488,258.8 492,260.0 496,261.2 500,261.6 504,261.1 508,260.0 512,258.9
-      516,258.4 520,258.9 524,260.0 528,261.1 532,261.5 536,261.0 540,260.0 544,259.0 548,258.6
-      552,259.0 556,260.0 560,261.0 564,261.4 568,261.0 572,260.0 576,259.1 580,258.7 584,259.1
-      588,260.0 592,260.9 596,261.3 600,260.9 604,260.0 608,259.1 612,258.8 616,259.1 620,260.0
-      624,260.8 628,261.2 632,260.8 636,260.0 640,259.2 644,258.9 648,259.2 652,260.0 656,260.8
-      660,261.1 664,260.8 668,260.0 672,259.2 676,258.9 680,259.2 684,260.0 688,260.7 692,261.0
-      696,260.7 700,260.0 704,259.3 708,259.0 712,259.3 716,260.0 720,260.7 724,261.0 728,260.7
-      732,260.0 736,259.3 740,259.0 744,259.3 748,260.0 752,260.7 756,260.9 760,260.7 764,260.0
-      768,259.4 772,259.1 776,259.4 780,260.0 784,260.6 788,260.9 792,260.6 796,260.0 800,259.4
+       0,273.2   4,272.5   8,273.1  12,275.0  16,276.9  20,277.7  24,277.0  28,275.0  32,273.0  36,272.0
+      40,272.8  44,275.0  48,277.2  52,278.2  56,277.3  60,275.0  64,272.7  68,271.6  72,272.6  76,275.0
+      80,277.5  84,278.7  88,277.7  92,275.0  96,272.3 100,271.0 104,272.1 108,275.0 112,278.0 116,279.3
+     120,278.1 124,275.0 128,271.9 132,270.5 136,271.7 140,275.0 144,278.3 148,279.5 152,278.2 156,275.0
+     160,272.0 164,270.7 168,271.8 172,275.0 176,278.1 180,278.9 184,277.7 188,275.0 192,272.5 196,271.5
+     200,272.6 204,275.0 208,277.4 212,277.9 216,276.9 220,275.0 224,273.2 228,272.5 232,273.3 236,275.0
+     240,276.7 244,277.2 248,276.3 252,275.0 256,273.7 260,273.2 264,273.8 268,275.0 272,276.2 276,276.5
+     280,276.0 284,275.0 288,274.1 292,273.5 296,274.2 300,275.0 304,275.8 308,276.0 312,275.7 316,275.0
+     320,274.4 324,273.9 328,274.4 332,275.0 336,275.5 340,275.7 344,275.4 348,275.0 352,274.6 356,274.3
+     360,274.6 364,275.0 368,275.3 372,275.5 376,275.3 380,275.0 384,274.7 388,274.5 392,274.7 396,275.0
+     400,275.3 404,275.5 408,275.3 412,275.0 416,274.7 420,274.5 424,274.7 428,275.0 432,275.3 436,275.4
+     440,275.3 444,275.0 448,274.7 452,274.6 456,274.8 460,275.0 464,275.2 468,275.3 472,275.2 476,275.0
+     480,274.8 484,274.7 488,274.8 492,275.0 496,275.2 500,275.3 504,275.2 508,275.0 512,274.8 516,274.7
+     520,274.8 524,275.0 528,275.2 532,275.3 536,275.2 540,275.0 544,274.8 548,274.7 552,274.8 556,275.0
+     560,275.2 564,275.3 568,275.2 572,275.0 576,274.8 580,274.7 584,274.8 588,275.0 592,275.2 596,275.3
+     600,275.2 604,275.0 608,274.8 612,274.7 616,274.8 620,275.0 624,275.2 628,275.2 632,275.1 636,275.0
+     640,274.9 644,274.8 648,274.9 652,275.0 656,275.1 660,275.2 664,275.1 668,275.0 672,274.9 676,274.8
+     680,274.9 684,275.0 688,275.1 692,275.2 696,275.1 700,275.0 704,274.9 708,274.8 712,274.9 716,275.0
+     720,275.1 724,275.2 728,275.1 732,275.0 736,274.9 740,274.8 744,274.9 748,275.0 752,275.1 756,275.1
+     760,275.1 764,275.0 768,274.9 772,274.8 776,274.9 780,275.0 784,275.1 788,275.1 792,275.1 796,275.0 800,274.9
     "
-    fill="none" stroke="#45A29E" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"
+    fill="none" stroke="#45A29E" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"
   />
 
   <!-- ============================================================ -->
-  <!-- Asymmetric wake arcs (memory kernel)                         -->
-  <!-- Each arc: gentle departure from adsorbate, steep arrival     -->
-  <!-- right side = compressed (recent perturbation)                -->
-  <!-- left side  = stretched (older perturbation)                  -->
+  <!-- Bath label — subtle, above the oscillator array              -->
   <!-- ============================================================ -->
-
-  <!-- Arc τ₃: weakest memory (furthest extent, lowest opacity) -->
-  <path d="M 190,225 C 278,82 680,96 694,250"
-        fill="none" stroke="#C5CAE9" stroke-opacity="0.40" stroke-width="2.4"
-        stroke-linecap="round"/>
-
-  <!-- Arc τ₂: intermediate memory -->
-  <path d="M 190,225 C 268,112 568,125 584,250"
-        fill="none" stroke="#9FA8DA" stroke-opacity="0.55" stroke-width="2.4"
-        stroke-linecap="round"/>
-
-  <!-- Arc τ₁: strongest memory (closest extent, highest opacity) -->
-  <path d="M 190,225 C 258,142 460,155 478,248"
-        fill="none" stroke="#5C6BC0" stroke-opacity="0.70" stroke-width="2.6"
-        stroke-linecap="round"/>
+  <text x="295" y="318" font-family="sans-serif" font-size="10" font-weight="300"
+        letter-spacing="3" fill="#C5C6C7" fill-opacity="0.35" text-anchor="middle" font-style="italic">bath  —  harmonic oscillators</text>
 
   <!-- ============================================================ -->
-  <!-- Adsorbate (solid circle + glow)                              -->
-  <!-- ============================================================ -->
-  <circle cx="180" cy="226" r="24" fill="url(#adsorbateGlow)"/>
-  <circle cx="180" cy="226" r="7" fill="#FF6F00" stroke="#FFB74D" stroke-width="1.2"/>
-
-  <!-- ============================================================ -->
-  <!-- Dots at arc endpoints + dashed vertical lines to surface     -->
+  <!-- Oscillator masses — distributed on the surface, left→right   -->
   <!-- ============================================================ -->
 
-  <!-- Arc τ₁ endpoint and line -->
-  <circle cx="478" cy="248" r="3" fill="#5C6BC0"/>
-  <line x1="478" y1="248" x2="478" y2="263" stroke="#C5C6C7" stroke-opacity="0.50" stroke-width="0.8" stroke-dasharray="3 3"/>
+  <!-- ω₁: far left, longest spring, warmest (low ω, red noise) -->
+  <circle cx="90" cy="275" r="14" fill="url(#glow1)"/>
+  <circle cx="90" cy="275" r="5.0" fill="#FF8A65" stroke="#FFCCBC" stroke-width="0.8"/>
 
-  <!-- Arc τ₂ endpoint and line -->
-  <circle cx="584" cy="250" r="3" fill="#9FA8DA"/>
-  <line x1="584" y1="250" x2="584" y2="263" stroke="#C5C6C7" stroke-opacity="0.45" stroke-width="0.8" stroke-dasharray="3 3"/>
+  <!-- ω₂ -->
+  <circle cx="175" cy="275" r="13" fill="url(#glow2)"/>
+  <circle cx="175" cy="275" r="4.7" fill="#FFB74D" stroke="#FFE0B2" stroke-width="0.8"/>
 
-  <!-- Arc τ₃ endpoint and line -->
-  <circle cx="694" cy="250" r="3" fill="#C5CAE9"/>
-  <line x1="694" y1="250" x2="694" y2="263" stroke="#C5C6C7" stroke-opacity="0.38" stroke-width="0.8" stroke-dasharray="3 3"/>
+  <!-- ω₃ -->
+  <circle cx="260" cy="275" r="12" fill="url(#glow3)"/>
+  <circle cx="260" cy="275" r="4.3" fill="#FFF176" stroke="#FFF9C4" stroke-width="0.8"/>
 
-  <!-- ============================================================ -->
-  <!-- Labels: τ₁, τ₂, τ₃ under dashed lines                        -->
-  <!-- ============================================================ -->
-  <text x="478" y="282" text-anchor="middle" font-family="sans-serif" font-size="13" font-style="italic"
-        fill="#C5C6C7" fill-opacity="0.75">τ₁</text>
-  <text x="584" y="282" text-anchor="middle" font-family="sans-serif" font-size="13" font-style="italic"
-        fill="#C5C6C7" fill-opacity="0.70">τ₂</text>
-  <text x="694" y="282" text-anchor="middle" font-family="sans-serif" font-size="13" font-style="italic"
-        fill="#C5C6C7" fill-opacity="0.62">τ₃</text>
+  <!-- ω₄ -->
+  <circle cx="345" cy="275" r="11" fill="url(#glow4)"/>
+  <circle cx="345" cy="275" r="4.0" fill="#81C784" stroke="#C8E6C9" stroke-width="0.8"/>
 
-  <!-- ============================================================ -->
-  <!-- Labels: K(τ₁), K(τ₂), K(τ₃) near arc peaks                  -->
-  <!-- ============================================================ -->
-  <text x="350" y="153" text-anchor="end" font-family="sans-serif" font-size="13" font-style="italic"
-        fill="#5C6BC0" fill-opacity="0.80">K(τ₁)</text>
-  <text x="410" y="125" text-anchor="end" font-family="sans-serif" font-size="12.5" font-style="italic"
-        fill="#9FA8DA" fill-opacity="0.75">K(τ₂)</text>
-  <text x="470" y="98" text-anchor="end" font-family="sans-serif" font-size="12.5" font-style="italic"
-        fill="#C5CAE9" fill-opacity="0.70">K(τ₃)</text>
+  <!-- ω₅ -->
+  <circle cx="425" cy="275" r="10.5" fill="url(#glow5)"/>
+  <circle cx="425" cy="275" r="3.7" fill="#64B5F6" stroke="#BBDEFB" stroke-width="0.8"/>
+
+  <!-- ω₆: closest to molecule, shortest spring, coolest (high ω, blue/violet noise) -->
+  <circle cx="500" cy="275" r="10" fill="url(#glow6)"/>
+  <circle cx="500" cy="275" r="3.4" fill="#CE93D8" stroke="#E1BEE7" stroke-width="0.8"/>
 
   <!-- ============================================================ -->
-  <!-- Text: MEMORY FRICTION (small caps) — top left                 -->
+  <!-- Springs — zigzag from molecule (top-right) to each oscillator -->
+  <!-- Colour encodes frequency / coupling strength                  -->
+  <!-- ============================================================ -->
+
+  <!-- ω₁: longest spring, warm orange-red, soft coupling -->
+  <polyline points="600.0,145.0 576.0,139.8 560.2,166.5 533.5,150.6 517.7,177.3 491.0,161.4 475.2,188.2 448.5,172.3 432.7,199.0 406.0,183.1 390.2,209.8 363.5,193.9 347.7,220.7 321.0,204.8 305.2,231.5 278.5,215.6 262.7,242.3 236.0,226.4 220.2,253.2 193.5,237.3 177.7,264.0 151.0,248.1 135.2,274.8 108.5,258.9 90.0,275.0"
+    fill="none" stroke="#FF7043" stroke-opacity="0.70" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- ω₂ -->
+  <polyline points="600.0,145.0 577.8,141.3 564.3,166.4 539.1,153.2 525.7,178.2 500.5,165.0 487.0,190.0 461.8,176.8 448.4,201.8 423.2,188.6 409.7,213.7 384.6,200.4 371.1,225.5 345.9,212.3 332.5,237.3 307.3,224.1 293.8,249.1 268.7,235.9 255.2,260.9 230.0,247.7 216.6,272.7 191.4,259.5 175.0,275.0"
+    fill="none" stroke="#FFA726" stroke-opacity="0.68" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- ω₃: intermediate spring, yellow -->
+  <polyline points="600.0,145.0 579.8,143.1 569.2,166.4 545.8,156.1 535.2,179.4 511.8,169.1 501.2,192.4 477.8,182.1 467.2,205.4 443.8,195.1 433.2,218.4 409.8,208.1 399.2,231.4 375.8,221.1 365.2,244.4 341.8,234.1 331.2,257.4 307.8,247.1 297.2,270.4 273.8,260.1 260.0,275.0"
+    fill="none" stroke="#FDD835" stroke-opacity="0.66" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- ω₄: green -->
+  <polyline points="600.0,145.0 582.2,145.1 575.3,166.6 553.9,159.5 547.0,181.0 525.5,174.0 518.6,195.5 497.2,188.4 490.3,209.9 468.9,202.9 462.0,224.3 440.5,217.3 433.6,238.8 412.2,231.8 405.3,253.2 383.9,246.2 377.0,267.7 355.5,260.7 345.0,275.0"
+    fill="none" stroke="#66BB6A" stroke-opacity="0.68" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- ω₅: blue -->
+  <polyline points="600.0,145.0 584.9,147.5 582.3,166.9 563.0,163.8 560.4,183.1 541.1,180.0 538.5,199.4 519.3,196.3 516.7,215.6 497.4,212.5 494.8,231.9 475.5,228.8 472.9,248.1 453.6,245.0 451.0,264.4 431.8,261.3 425.0,275.0"
+    fill="none" stroke="#42A5F5" stroke-opacity="0.68" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- ω₆: shortest spring, violet, stiff coupling -->
+  <polyline points="600.0,145.0 588.1,150.6 590.5,167.2 573.8,169.2 576.2,185.8 559.5,187.8 561.9,204.4 545.2,206.3 547.6,222.9 531.0,224.9 533.3,241.5 516.7,243.5 519.0,260.1 502.4,262.1 500.0,275.0"
+    fill="none" stroke="#AB47BC" stroke-opacity="0.68" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- ============================================================ -->
+  <!-- Subtle oscillation arcs at each bath oscillator              -->
+  <!-- ============================================================ -->
+  <g fill="none" stroke-width="0.9" stroke-opacity="0.30">
+    <path d="M  78,262 Q  90,254 102,262" stroke="#FF8A65"/>
+    <path d="M 163,262 Q 175,254 187,262" stroke="#FFB74D"/>
+    <path d="M 248,262 Q 260,254 272,262" stroke="#FFF176"/>
+    <path d="M 334,262 Q 345,254 356,262" stroke="#81C784"/>
+    <path d="M 414,262 Q 425,254 436,262" stroke="#64B5F6"/>
+    <path d="M 490,262 Q 500,254 510,262" stroke="#CE93D8"/>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- Frequency labels — below each oscillator on the surface       -->
+  <!-- ============================================================ -->
+  <g font-family="sans-serif" font-size="11.5" font-style="italic" text-anchor="middle">
+    <text x="90"  y="300" fill="#FF8A65" fill-opacity="0.80">ω₁</text>
+    <text x="175" y="300" fill="#FFB74D" fill-opacity="0.80">ω₂</text>
+    <text x="260" y="300" fill="#FFF176" fill-opacity="0.80">ω₃</text>
+    <text x="345" y="300" fill="#81C784" fill-opacity="0.80">ω₄</text>
+    <text x="425" y="300" fill="#64B5F6" fill-opacity="0.80">ω₅</text>
+    <text x="500" y="300" fill="#CE93D8" fill-opacity="0.80">ω₆</text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- Adsorbate molecule (the SYSTEM) — top right                   -->
+  <!-- ============================================================ -->
+  <!-- Subtle "system" label -->
+  <text x="600" y="118" font-family="sans-serif" font-size="9" font-weight="300"
+        letter-spacing="3" fill="#C5C6C7" fill-opacity="0.35" text-anchor="middle" font-style="italic">system</text>
+
+  <!-- Outer glow -->
+  <circle cx="600" cy="145" r="24" fill="url(#adsorbateGlow)"/>
+  <!-- Main body — slightly larger for prominence -->
+  <circle cx="600" cy="145" r="8" fill="#FF6F00" stroke="#FFB74D" stroke-width="1.4"/>
+
+  <!-- ============================================================ -->
+  <!-- Text: MEMORY FRICTION — top left                              -->
   <!-- ============================================================ -->
   <text x="38" y="64" font-family="sans-serif" font-size="32" font-weight="600"
         letter-spacing="8" fill="#FFFFFF" fill-opacity="0.92"
         text-transform="uppercase">MEMORY FRICTION</text>
 
   <!-- ============================================================ -->
-  <!-- Text: Copyright / author — bottom                             -->
+  <!-- Descriptor line — below title                                 -->
   <!-- ============================================================ -->
-  <text x="42" y="370" font-family="sans-serif" font-size="16" font-weight="400"
+  <text x="42" y="88" font-family="sans-serif" font-size="11" font-weight="300"
+        letter-spacing="2.2" fill="#9FA8DA" fill-opacity="0.48" font-style="italic">system–bath coupling  ·  coloured-noise memory kernel</text>
+
+  <!-- ============================================================ -->
+  <!-- Copyright / author — bottom                                   -->
+  <!-- ============================================================ -->
+  <text x="42" y="368" font-family="sans-serif" font-size="16" font-weight="400"
         letter-spacing="2" fill="#C5C6C7" fill-opacity="0.78">© Xuexun Lu</text>
 
   <!-- ============================================================ -->
-  <!-- Subtitle: method description — bottom                         -->
+  <!-- Subtitle: method — bottom                                     -->
   <!-- ============================================================ -->
-  <text x="42" y="390" font-family="sans-serif" font-size="11" font-weight="300"
+  <text x="42" y="388" font-family="sans-serif" font-size="11" font-weight="300"
         letter-spacing="1.2" fill="#45A29E" fill-opacity="0.55">GENERALISED LANGEVIN DYNAMICS  ·  NON-MARKOVIAN ELECTRONIC FRICTION</text>
 
   <!-- ============================================================ -->
-  <!-- Decorative: faint energy-level tick marks on left side       -->
+  <!-- Decorative: faint energy-level tick marks on left side        -->
   <!-- ============================================================ -->
   <g stroke="#C5C6C7" stroke-opacity="0.10" stroke-width="0.5">
     <line x1="20" y1="200" x2="30" y2="200"/>
