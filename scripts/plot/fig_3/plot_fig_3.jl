@@ -16,7 +16,7 @@ const colors = [
     colorant"#1f77b4",
     colorant"#2ca02c",
     colorant"#d62728",
-]
+] 
 
 const FONT = projectdir("assets", "fonts", "dejavu-sans.book.ttf")
 
@@ -28,6 +28,10 @@ const FIG_WIDTH  = round(Int, FIG_FRACTION * FIGURE_WIDTH)
 const FIG_HEIGHT = round(Int, FIG_WIDTH * 0.55)
 
 const panel_spinewidth = scaled(1.8)
+const TICK_WIDTH       = scaled(2)
+const MINORTICK_WIDTH  = scaled(2.0)
+const TICK_LENGTH      = scaled(8.0)
+const MINORTICK_LENGTH = scaled(5.5)
 const LINE_WIDTH       = scaled(2.5)
 const MARKER_SIZE      = scaled(12)
 const PANEL_COLGAP     = scaled(10)
@@ -94,9 +98,15 @@ h5open(h5_path, "r") do h5
                     ytickalign         = 1,
                     xminortickalign    = 1,
                     yminortickalign    = 1,
+                    yminorticksvisible  = true,
                     spinewidth         = panel_spinewidth,
-                    xtickwidth         = panel_spinewidth,
-                    ytickwidth         = panel_spinewidth)
+                    xtickwidth         = TICK_WIDTH,
+                    ytickwidth         = TICK_WIDTH,
+                    yminortickwidth    = MINORTICK_WIDTH,
+                    xticksize          = TICK_LENGTH,
+                    yticksize          = TICK_LENGTH,
+                    xminorticksize     = MINORTICK_LENGTH,
+                    yminorticksize     = MINORTICK_LENGTH)
     end
 
     linkxaxes!(vec(axes[:, 1:N_COLS-1])...)
