@@ -4,31 +4,43 @@ import os
 import sys
 from pathlib import Path
 
+_CONDA_PY = Path("/Users/u1865573/miniconda3/envs/CUDA-torch-base/bin/python")
+if (
+    os.environ.get("MF_SELF_CONTAINED_BOOTSTRAPPED") != "1"
+    and _CONDA_PY.exists()
+    and Path(sys.executable) != _CONDA_PY
+):
+    os.environ["MF_SELF_CONTAINED_BOOTSTRAPPED"] = "1"
+    os.execv(str(_CONDA_PY), [str(_CONDA_PY), str(Path(__file__).resolve()), *sys.argv[1:]])
+
+os.environ.setdefault("MPLCONFIGDIR", str(Path(__file__).resolve().parent / ".mplconfig_shared"))
+os.environ.setdefault("XDG_CACHE_HOME", str(Path(__file__).resolve().parent / ".cache_shared"))
 
 import numpy as np
 import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.ticker import AutoMinorLocator
 
 
 PLOT_STYLE_CAIRO = {
-    "font.family": "STIXGeneral",
-    "mathtext.fontset": "stix",
-    "axes.linewidth": 1.1,
+    "font.family": "DejaVu Sans",
+    "mathtext.fontset": "dejavusans",
+    "axes.linewidth": 1.4,
     "xtick.direction": "in",
     "ytick.direction": "in",
     "xtick.top": True,
     "ytick.right": True,
-    "xtick.major.size": 6,
-    "ytick.major.size": 6,
-    "xtick.major.width": 1.0,
-    "ytick.major.width": 1.0,
-    "axes.labelsize": 14,
-    "axes.titlesize": 13,
-    "xtick.labelsize": 11,
-    "ytick.labelsize": 11,
-    "legend.fontsize": 10,
+    "xtick.major.size": 5,
+    "ytick.major.size": 5,
+    "xtick.major.width": 1.2,
+    "ytick.major.width": 1.2,
+    "axes.labelsize": 10,
+    "axes.titlesize": 9,
+    "xtick.labelsize": 8,
+    "ytick.labelsize": 8,
+    "legend.fontsize": 8,
 }
 
 
@@ -59,6 +71,9 @@ def _style_axes_box(ax):
     for spine in ax.spines.values():
         spine.set_linewidth(1.1)
     ax.tick_params(pad=7)
+    ax.xaxis.set_minor_locator(AutoMinorLocator(2))
+    ax.yaxis.set_minor_locator(AutoMinorLocator(2))
+    ax.tick_params(which="minor", direction="in", top=True, right=True, length=3, width=1.0)
 
 
 def _beeswarm_x(x0, y, jitter=0.085):
@@ -81,24 +96,22 @@ def _beeswarm_x(x0, y, jitter=0.085):
 
 def main():
     here = Path(__file__).resolve().parent
-    data = np.load(here / "fig2_approximations_data.npz")
+    data = np.load(here / "fig2_original_data.npz")
 
-    scheme_order = ["local_raw", "local_broadened", "conf_avg_local", "separable", "separable_broadened"]
+    scheme_order = ["low", "high", "nonmarkov"]
     labels = [
-        r"Endpoint, $\sigma = 0.01$ eV",
-        r"Endpoint, $\sigma = 0.05$ eV",
-        r"Arith-mean, $\sigma = 0.01$ eV",
-        r"Sep. coupling, $\sigma = 0.01$ eV",
-        r"Sep. coupling, $\sigma = 0.05$ eV",
+        r"Markov. ($\boldsymbol{\eta}^{\mathrm{ODF}}$)",
+        r"Markov. ($\boldsymbol{\eta}^{\mathrm{Avg}}$)",
+        r"Non-Markov.",
     ]
-    colors = ["#4C78A8", "#F58518", "#54A24B", "#B279A2", "#E45756"]
+    colors = ["#d62728", "#1f77b4", "#444444"]
     x = np.arange(len(scheme_order))
     totals = [data[f"totals_{name}"] for name in scheme_order]
     modes = [data[f"modes_{name}"] for name in scheme_order]
 
     with plt.rc_context(PLOT_STYLE_CAIRO):
-        fig = plt.figure(figsize=(6.8, 4.5))
-        gs = fig.add_gridspec(3, 2, width_ratios=[1.35, 1.05], height_ratios=[1, 1, 1], wspace=0.42, hspace=0.14)
+        fig = plt.figure(figsize=(3.25, 3.35))
+        gs = fig.add_gridspec(3, 2, width_ratios=[1.30, 1.0], height_ratios=[1, 1, 1], wspace=0.54, hspace=0.12)
 
         ax_total = fig.add_subplot(gs[:, 0])
         _apply_boxplot(ax_total, totals, colors, x)
@@ -109,7 +122,7 @@ def main():
         ax_total.set_ylabel(r"$\Delta E$ (eV)")
 
         mode_axes = [fig.add_subplot(gs[row, 1], sharex=ax_total) for row in range(3)]
-        mode_titles = [r"$r$", r"$\theta$", r"$z$"]
+        mode_titles = [r"$\mathrm{r}$", r"$\mathrm{\theta}$", r"$\mathrm{z}$"]
         all_mode_values = np.concatenate([arr.reshape(-1) for arr in modes])
         ymin = min(np.percentile(all_mode_values, 1.5), 0.0)
         ymax = max(np.percentile(all_mode_values, 98.5), 1e-3)
@@ -135,12 +148,12 @@ def main():
             else:
                 ax.tick_params(labelbottom=False)
 
-        fig.text(0.02, 0.965, "(a)", fontsize=PLOT_STYLE_CAIRO["axes.titlesize"], fontfamily=PLOT_STYLE_CAIRO["font.family"], va="bottom", ha="left")
-        fig.text(0.58, 0.965, "(b)", fontsize=PLOT_STYLE_CAIRO["axes.titlesize"], fontfamily=PLOT_STYLE_CAIRO["font.family"], va="bottom", ha="left")
-        fig.subplots_adjust(left=0.13, right=0.985, bottom=0.24, top=0.96)
+        fig.text(0.02, 0.975, "(a)", fontsize=PLOT_STYLE_CAIRO["axes.titlesize"], fontfamily=PLOT_STYLE_CAIRO["font.family"], fontweight="bold", va="bottom", ha="left")
+        fig.text(0.56, 0.975, "(b)", fontsize=PLOT_STYLE_CAIRO["axes.titlesize"], fontfamily=PLOT_STYLE_CAIRO["font.family"], fontweight="bold", va="bottom", ha="left")
+        fig.subplots_adjust(left=0.16, right=0.985, bottom=0.21, top=0.96)
 
-    out_pdf = here / "fig2_approximations_self_contained.pdf"
-    out_png = here / "fig2_approximations_self_contained.png"
+    out_pdf = here / "fig7.pdf"
+    out_png = here / "fig7.png"
     fig.savefig(out_pdf, bbox_inches="tight")
     fig.savefig(out_png, bbox_inches="tight", dpi=300)
     plt.close(fig)
