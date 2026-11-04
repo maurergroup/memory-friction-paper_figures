@@ -29,19 +29,17 @@ const panel_label_fontsize   = 16
 # --- row_xspec logic (identical to the original) ---
 function row_xspec(ν_init)
     if ν_init ≤ 5
-        return (xticks = 0:1:5,         xlims = (-0.5, 5.5))
+        # ymax 1.25: every trajectory ends in ν = 0 here (P = 1), so leave
+        # room above it for the panel letter.
+        return (xticks = 0:1:5,         xlims = (-0.5, 5.5), ymax = 1.25)
     elseif ν_init ≤ 10
         return (xticks = 0:2:10,        xlims = (-0.5, 10.5))
     else
-        return (xticks = 6:3:18,        xlims = (5, 19))
-    end
-end
-
-function row_yspec(ν_init)
-    if ν_init > 10
-        return (yticks = 0:0.2:0.6, ymax = 0.62)
-    else
-        return (yticks = Makie.automatic, ymax = nothing)
+        # Bottom row: with the diag(μ, M) MD the final states live at
+        # ν ≈ 2.5–7.5, so start at 0 and stop just past the initial-state
+        # line at ν = νᵢ = 16. No tick at 16: with colgap 0 its label
+        # collides with the next panel's "0".
+        return (xticks = 0:5:15,        xlims = (-1, 17))
     end
 end
 
@@ -95,19 +93,17 @@ for pname in panel_names
     r_idx = parse(Int, parts[2])
     c_idx = parse(Int, parts[3])
 
-    spec  = row_xspec(Int(nu_init))
-    yspec = row_yspec(Int(nu_init))
+    spec = row_xspec(Int(nu_init))
 
     ax = Axis(fig[r_idx + 1, c_idx];
               xticks = spec.xticks,
-              yticks = yspec.yticks,
               xticklabelsize = tick_fontsize,
               yticklabelsize = tick_fontsize,
               xtickalign = 1.0,
               ytickalign = 1.0,
               xticksmirrored = false,
               yticksmirrored = true,
-              limits = (spec.xlims[1], spec.xlims[2], -0.05, yspec.ymax),
+              limits = (spec.xlims[1], spec.xlims[2], -0.05, get(spec, :ymax, nothing)),
               spinewidth = panel_spinewidth,
               xtickwidth = panel_spinewidth,
               ytickwidth = panel_spinewidth,
@@ -197,7 +193,7 @@ Label(fig[:, 0], "Probability";
       rotation = π / 2,
       tellheight = false,
       padding = (0, 0, 0, 0))
-Label(fig[n_rows + 2, 1:n_cols], "Final vibrational state ν";
+Label(fig[n_rows + 2, 1:n_cols], "Final vibrational state v";
       fontsize = label_fontsize,
       tellwidth = false,
       padding = (0, 0, 0, 0))
