@@ -59,6 +59,13 @@ end
     test_figure(5,
         "scripts/plot/fig_5/plot_fig_5.jl",
         "plots/fig_5/fig_5.pdf")
+
+    # Supplementary figures S2–S9
+    for n in 2:9
+        test_figure("S$n",
+            "scripts/plot/fig_S$n/plot_fig_S$n.jl",
+            "plots/fig_S$n/fig_S$n.pdf")
+    end
 end
 
 # -----------------------------------------------------------------------------
@@ -66,7 +73,7 @@ end
 # and are non-empty (catches partial git-lfs pulls, corruption, etc.).
 # -----------------------------------------------------------------------------
 @testset "Data file integrity" begin
-    for fig in 2:5
+    for fig in [string.(2:5); ["S$n" for n in 2:9]]
         data_path = projectdir("figure_data", "fig_$fig", "fig_$(fig)_data.h5")
         @test isfile(data_path)
         @test filesize(data_path) > 0
